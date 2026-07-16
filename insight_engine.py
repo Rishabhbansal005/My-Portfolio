@@ -20,26 +20,32 @@ def get_project_insights(project_name: str) -> str:
     prompt = f"""
     You are an expert AI software architect reviewing a portfolio project.
     Project Name: {project_name}
-    GitHub Data / Context: {repo_info}
+    GitHub Data & README Context: 
+    {repo_info}
     
-    Write a short, impressive technical review in Markdown format.
-    Include exactly these three sections (using ### headers):
+    Write an accurate and impressive technical review in Markdown format. 
+    Use the provided README data to highlight real features and facts. 
+    Write in simple, easy-to-understand language. Use short, readable paragraphs (avoid too many bullet points). Keep the total length moderate (not too long, not too short).
+    
+    Include exactly these four sections (using ### headers):
+    ### The Problem & The Solution
     ### Architecture Overview
     ### Key Technical Decisions
     ### Challenges Solved
     
-    Keep it professional, insightful, and use bullet points where appropriate. Do not output anything other than the markdown text.
+    In the first section ("The Problem & The Solution"), clearly explain what problem the user faced and how this project solved it.
+    Focus on real details from the README. Do not output anything other than the markdown text.
     """
     
     try:
         completion = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[
-                {"role": "system", "content": "You are a senior technical reviewer for a portfolio."},
+                {"role": "system", "content": "You are a senior technical reviewer for a portfolio. You analyze GitHub READMEs to provide accurate architectural insights."},
                 {"role": "user", "content": prompt}
             ],
-            temperature=0.5,
-            max_tokens=600,
+            temperature=0.4,
+            max_tokens=1000,
         )
         return completion.choices[0].message.content
     except Exception as e:

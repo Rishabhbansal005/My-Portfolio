@@ -244,24 +244,7 @@
             </div>
           </div>
           <div class="card-accent-bar"></div>
-          <button class="case-study-toggle" aria-expanded="false" aria-controls="bharat-case-panel">
-            Read case study ↓
-          </button>
-          <div class="case-study-panel" id="bharat-case-panel" aria-hidden="true">
-            <p>The Indian Heritage &amp; Culture portal existed as an older government-era design — information-dense
-              but difficult to navigate on modern devices. The redesign rebuilt the entire UI as a responsive,
-              accessible interface while preserving all original content, making centuries of cultural and heritage data
-              genuinely usable.</p>
-            <p>Bharat AI's chatbot is powered by GroqCloud LLM APIs routed through FastAPI endpoints. Multi-turn context
-              is managed server-side: on every request, the client sends its session ID, the backend retrieves the
-              accumulated message history for that session, appends the new user message, forwards the full history to
-              GroqCloud, then stores the assistant reply — giving the model coherent conversational memory without
-              requiring any client-side state management.</p>
-            <p>FastAPI was chosen for its async-first design, which keeps LLM API wait times non-blocking and allows the
-              server to remain responsive during inference calls. Session history is held in-process memory — a
-              deliberate tradeoff that keeps the architecture simple for a demo-scale deployment at the cost of session
-              loss on server restart, which is acceptable here.</p>
-          </div>
+
           <button class="ai-insights-toggle" aria-expanded="false" aria-controls="heritage-insights-panel"
             data-project="indian-heritage">
             AI Architecture Analysis ↓
