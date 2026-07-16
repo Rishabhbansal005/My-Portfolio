@@ -9,9 +9,7 @@ from dotenv import load_dotenv
 import sys
 import os
 
-# Add root folder to python path so it can find the scripts
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from insight_engine import get_project_insights
+from .insight_engine import get_project_insights
 
 load_dotenv()
 
@@ -66,4 +64,4 @@ async def project_insights(project: str):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("api.index:app", host="0.0.0.0", port=8000, reload=True)

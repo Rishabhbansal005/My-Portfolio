@@ -1,6 +1,6 @@
 import os
 from groq import Groq
-from github_researcher import fetch_github_data
+from .github_researcher import fetch_github_data
 
 def get_project_insights(project_name: str) -> str:
     """
