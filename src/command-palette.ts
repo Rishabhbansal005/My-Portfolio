@@ -122,7 +122,7 @@ function buildModal(shortcutLabel: string): HTMLElement {
   overlay.setAttribute('role', 'dialog');
   overlay.setAttribute('aria-modal', 'true');
   overlay.setAttribute('aria-label', 'Command palette');
-  overlay.hidden = true;
+  // No hidden attribute — visibility controlled by .cmd-visible CSS class
 
   overlay.innerHTML = `
     <div id="cmd-modal" role="document">
@@ -299,7 +299,6 @@ export function initCommandPalette(applyTheme: (t: string) => void): void {
     if (isOpen) return;
     isOpen = true;
     previousFocus = document.activeElement as HTMLElement;
-    overlay.hidden = false;
     document.body.style.overflow = 'hidden';
     renderList(commands);
     input.value = '';
@@ -314,11 +313,6 @@ export function initCommandPalette(applyTheme: (t: string) => void): void {
     isOpen = false;
     overlay.classList.remove('cmd-visible');
     document.body.style.overflow = '';
-    const onEnd = () => {
-      overlay.hidden = true;
-      overlay.removeEventListener('transitionend', onEnd);
-    };
-    overlay.addEventListener('transitionend', onEnd);
     previousFocus?.focus();
   }
 
