@@ -480,15 +480,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Convert headers (e.g. ### Headers) to <h3>
     html = html.replace(/^###\s+(.*?)$/gm, '<h3>$1</h3>');
     html = html.replace(/^##\s+(.*?)$/gm, '<h3>$1</h3>');
-    
+
     // 3. Convert markdown lists (1. bullet, * bullet or - bullet) to <li>
     html = html.replace(/^\s*(?:[\*\-]|(?:[0-9]+\.))\s+(.*?)$/gm, '<li>$1</li>');
-    
+
     // 4. Wrap adjacent <li> lines inside <ul> groups
     html = html.replace(/(?:<li>.*?<\/li>\s*)+/gs, (match) => {
       return `<ul>${match.trim()}</ul>`;
     });
-    
+
     // 5. Convert clean non-HTML blocks into paragraphs
     const paragraphs = html.split('\n\n');
     const processed = paragraphs.map(p => {
