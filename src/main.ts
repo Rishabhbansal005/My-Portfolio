@@ -2,6 +2,8 @@
 // HERITAGE TECH — main.js
 // ================================================================
 import { initChakraDividers } from './three.bg.js';
+import { initCommandPalette } from './command-palette.js';
+import { initKonamiEgg } from './easter-egg.js';
 
 // ── PREVENT SCROLL RESTORATION ───────────────────────────────────
 if ('scrollRestoration' in history) {
@@ -581,6 +583,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // ── 10. COMMAND PALETTE ────────────────────────────────────────
+  initCommandPalette(applyTheme);
+
+  // ── 11. KONAMI CODE EASTER EGG ────────────────────────────────
+  initKonamiEgg();
 
 });
 
