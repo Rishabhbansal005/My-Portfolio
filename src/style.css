@@ -1936,12 +1936,21 @@ body {
   }
 
   .beyond-grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
     gap: 12px;
+    padding-bottom: 16px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Firefox */
   }
-
+  .beyond-grid::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
   .beyond-tile {
     padding: 18px 16px;
+    flex: 0 0 220px; /* Fixed width for horizontal scrolling */
+    scroll-snap-align: start;
   }
 
   .exp-entry {

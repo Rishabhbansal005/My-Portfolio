@@ -72,14 +72,14 @@ window.scrollTo(0, 0);
   //    Exit fires only AFTER bar reaches 100% + 0.6s pause
   let progress = 0;
   setTimeout(() => {
-    // Total fill time: 6000ms. Tick every 30ms → 200 steps → += 0.5 per step
-    const FILL_MS = 6000;
+    // Total fill time: 3000ms. Tick every 30ms → 100 steps → += 1 per step
+    const FILL_MS = 3000;
     const TICK_MS = 30;
     const INCREMENT = 100 / (FILL_MS / TICK_MS); // = 0.5
 
     const barInterval = setInterval(() => {
       progress = Math.min(100, progress + INCREMENT);
-      bar.style.width = progress + '%';
+      if (bar) bar.style.width = progress + '%';
       if (counterEl) counterEl.textContent = Math.round(progress) + '%';
 
       if (progress >= 100) {

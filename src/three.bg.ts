@@ -139,7 +139,7 @@ function buildChakra(container: HTMLElement) {
         if (!isVisible) return; // Pause rendering when off-screen
         
         const speed = hovered ? 0.015 : 0.004;
-        chakraGroup.rotation.z += speed;
+        chakraGroup.rotation.z -= speed; // Clockwise
         renderer.render(scene, camera);
         
         animationId = requestAnimationFrame(animate);
