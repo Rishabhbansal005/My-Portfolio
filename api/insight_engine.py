@@ -4,7 +4,7 @@ from .github_researcher import fetch_github_data
 
 def get_project_insights(project_name: str) -> str:
     """
-    Combines GitHub data with Groq's Llama 3 to generate a technical architecture review.
+    Combines GitHub data with Groq (GPT-OSS 20B) to generate a technical architecture review.
     """
     # 1. Fetch info from Github
     repo_info = fetch_github_data(project_name)
@@ -39,7 +39,7 @@ def get_project_insights(project_name: str) -> str:
     
     try:
         completion = client.chat.completions.create(
-            model="llama-3.1-8b-instant",
+            model="openai/gpt-oss-20b",
             messages=[
                 {"role": "system", "content": "You are a senior technical reviewer for a portfolio. You analyze GitHub READMEs to provide accurate architectural insights."},
                 {"role": "user", "content": prompt}
