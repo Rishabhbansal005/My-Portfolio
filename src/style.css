@@ -1005,11 +1005,12 @@ body {
 .step-3 {
   margin-left: 80px;
   margin-right: 0;
-  opacity: .72
+  opacity: 1;
 }
 
 .step-card:hover {
   z-index: 10;
+  opacity: 1 !important;
   transform: perspective(800px) translateY(-6px) scale(1.01) !important;
   border-color: rgba(184, 115, 51, 0.45);
   box-shadow: 0 25px 55px rgba(0, 0, 0, 0.65), 0 0 15px rgba(184, 115, 51, 0.1);
@@ -1050,7 +1051,7 @@ body {
 
 .card-title {
   font-family: 'Clash Display', sans-serif;
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-size: clamp(1.4rem, 2.3vw, 1.85rem);
   font-weight: 600;
   letter-spacing: -.02em;
   margin-bottom: 14px;
@@ -1060,7 +1061,57 @@ body {
   font-size: .92rem;
   line-height: 1.7;
   color: var(--text-2);
-  margin-bottom: 20px
+  margin-bottom: 16px
+}
+
+.project-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.project-bullet {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--text-2);
+  position: relative;
+  padding-left: 20px;
+}
+
+.project-bullet::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.project-bullet strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.code-pill {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.82em;
+  padding: 2px 6px;
+  background: var(--accent-glow);
+  border: 1px solid var(--glass-border);
+  border-radius: 4px;
+  color: var(--accent);
+}
+
+.card-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 4px;
 }
 
 .tag-row {
